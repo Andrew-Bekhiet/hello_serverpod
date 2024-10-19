@@ -77,7 +77,6 @@ class MyHomePageState extends State<MyHomePage> {
         padding: const EdgeInsets.all(16),
         child: Column(
           children: [
-            Text(client.host),
             Padding(
               padding: const EdgeInsets.only(bottom: 16.0),
               child: TextField(
