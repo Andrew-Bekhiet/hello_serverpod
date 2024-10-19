@@ -1,5 +1,6 @@
-import 'package:hello_serverpod_client/hello_serverpod_client.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:hello_serverpod_client/hello_serverpod_client.dart';
 import 'package:serverpod_flutter/serverpod_flutter.dart';
 
 // Sets up a singleton client object that can be used to talk to the server from
@@ -7,8 +8,14 @@ import 'package:serverpod_flutter/serverpod_flutter.dart';
 // The client is set up to connect to a Serverpod running on a local server on
 // the default port. You will need to modify this to connect to staging or
 // production servers.
-var client = Client('http://$localhost:8080/')
-  ..connectivityMonitor = FlutterConnectivityMonitor();
+var client = Client(
+  kReleaseMode
+      ? 'http://$localhost:8080/'
+      : String.fromEnvironment(
+          'SERVERPOD_URL',
+          defaultValue: 'http://$localhost:8080/',
+        ),
+)..connectivityMonitor = FlutterConnectivityMonitor();
 
 void main() {
   runApp(const MyApp());

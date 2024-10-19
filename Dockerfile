@@ -17,9 +17,11 @@ RUN apt-get update && apt-get -y install curl git unzip xz-utils zip libglu1-mes
 RUN git clone https://github.com/flutter/flutter.git /usr/local/flutter
 ENV PATH="${PATH}:/usr/local/flutter/bin"
 
+ARG SERVERPOD_URL
+
 # Run web build
 RUN flutter pub get
-RUN flutter build web
+RUN flutter build web --dart-define SERVERPOD_URL
 
 FROM alpine:latest
 
