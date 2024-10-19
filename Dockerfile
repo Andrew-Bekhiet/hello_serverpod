@@ -21,7 +21,7 @@ ARG SERVERPOD_URL
 
 # Run web build
 RUN flutter pub get
-RUN flutter build web --dart-define SERVERPOD_URL
+RUN flutter build web --dart-define SERVERPOD_URL=${SERVERPOD_URL}
 
 FROM alpine:latest
 
