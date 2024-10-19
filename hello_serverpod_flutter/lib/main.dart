@@ -10,11 +10,11 @@ import 'package:serverpod_flutter/serverpod_flutter.dart';
 // production servers.
 var client = Client(
   kReleaseMode
-      ? 'http://$localhost:8080/'
-      : String.fromEnvironment(
+      ? String.fromEnvironment(
           'SERVERPOD_URL',
           defaultValue: 'http://$localhost:8080/',
-        ),
+        )
+      : 'http://$localhost:8080/',
 )..connectivityMonitor = FlutterConnectivityMonitor();
 
 void main() {
