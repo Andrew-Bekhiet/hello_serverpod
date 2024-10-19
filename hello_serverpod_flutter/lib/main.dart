@@ -10,10 +10,7 @@ import 'package:serverpod_flutter/serverpod_flutter.dart';
 // production servers.
 var client = Client(
   kReleaseMode
-      ? String.fromEnvironment(
-          'SERVERPOD_URL',
-          defaultValue: 'http://$localhost:8080/',
-        )
+      ? const String.fromEnvironment('SERVERPOD_URL')
       : 'http://$localhost:8080/',
 )..connectivityMonitor = FlutterConnectivityMonitor();
 
@@ -80,6 +77,7 @@ class MyHomePageState extends State<MyHomePage> {
         padding: const EdgeInsets.all(16),
         child: Column(
           children: [
+            Text(client.host),
             Padding(
               padding: const EdgeInsets.only(bottom: 16.0),
               child: TextField(
