@@ -21,7 +21,11 @@ void run(List<String> args) async {
   // Serve all files in the hello_serverpod_server/web directory.
   // This directory will be populated by Docker with our flutter web build.
   pod.webServer.addRoute(
-    RouteStaticDirectory(serverDirectory: '.', serveAsRootPath: '/index.html'),
+    RouteStaticDirectory(
+      serverDirectory: '.',
+      serveAsRootPath: '/index.html',
+      basePath: '/',
+    ),
     '/*',
   );
 
